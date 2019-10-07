@@ -1,0 +1,22 @@
+<nav class="navbar">
+    <div class="container">
+    <div class="ui-g">
+    <div class="ui-g-12">
+    
+       <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"> <i style="color:white" class="pi pi-bars"> </i></a>
+    </div>
+    </div>
+    </div>
+    
+    
+    <ul class="navbar-menu" [hidden]="!exibindoMenu">
+        <li class="navbar-user">Administrador</li>
+        <a routerLink="/titulos" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Titulos</li></a> 
+        <a routerLink="/pacientes" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Pacientes</li></a> 
+        <a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Dashboard</li></a> 
+        <a routerLink="/profissionais" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Profissionais</li></a>  
+        <a routerLink="/agendamentos" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Agendamentos</li></a>  
+    </ul>
+    
+    
+    </nav>

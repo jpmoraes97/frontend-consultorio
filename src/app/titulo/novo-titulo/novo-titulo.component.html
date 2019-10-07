@@ -1,0 +1,76 @@
+<div class="ui-g">
+        <div class="ui-g-12 ui-fluid">
+            <h1 style="color:#4c4f4d; font-weight: bold">Titulos / {{editando ? 'Editar' : 'Cadastrar'}}</h1>
+        </div>
+        
+        <form [formGroup]="formulario" autocomplete="off" (ngSubmit)="salvar()">
+        
+        
+            <p-fieldset>
+            <p-header style="color:#4c4f4d; font-weight: bold">DADOS DO TITULO</p-header>  
+          
+        
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+                <label>Tipo</label>
+                <p-selectButton name="tipo" [options]="tipos" formControlName="tipo"></p-selectButton>
+            </div>
+        
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+                <label>Descricao</label>
+                <input pInputText name="descricao" formControlName="descricao"/>
+            </div>
+        
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid" >
+                <label>Data Vencimento</label>
+                <p-calendar name="dataVencimento" [touchUI]="true" formControlName="dataVencimento" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+                <label>Data Pagamento</label>
+                <p-calendar name="dataPagamento" [touchUI]="true" formControlName="dataPagamento" dateFormat="dd/mm/yy"></p-calendar>
+            </div>
+        
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid" formGroupName="categoria">
+                <label>Categoria</label>
+                <p-dropdown name="categoria" [options]="categorias" formControlName="id" placeholder="Selecione" [filter]="true" [virtualScroll]="true"></p-dropdown>
+            </div>
+        
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid" formGroupName="profissional" >
+                <label>Profissional</label>
+                <p-dropdown name="profissional" [options]="profissionais" formControlName="id" placeholder="Selecione" [filter]="true" [virtualScroll]="true"></p-dropdown>
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+                <label>Valor</label>
+                <input pInputText name="valor" formControlName="valor"/>
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid" >
+                <label>Observacao</label>
+                <input pInputText name="observacao" formControlName="observacao"/>
+            </div>
+        
+        
+        </p-fieldset>
+            
+        
+        
+           
+        
+        
+            <div class="ui-g-2 ui-fluid">
+                <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid" class="ui-button-info"></button>
+            </div>
+        
+            <br  />
+        
+            <a routerLink="/titulos">Voltar a pesquisa de titulos</a>
+           
+        
+           
+        
+        </form>
+        
+        
+        </div>
+        

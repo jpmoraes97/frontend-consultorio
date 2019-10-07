@@ -1,0 +1,45 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <h1 style="color:#4c4f4d; font-weight: bold">Agendamentos / Pesquisar</h1>
+    </div>
+    
+    <p-table [value]="agendamentos" [responsive]="true" [paginator]="true" [rows]="5">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>DATA</th>
+                <th>HORARIO</th>
+                <th>PACIENTE</th>
+                <th>PROFISSIONAL</th>
+                <th>AÇÕES</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-agendamento>
+            <tr>
+                <td>{{agendamento.data | date: 'dd/MM/yyyy'}}</td>
+                <td>{{agendamento.horario}}</td>
+                <td>{{agendamento.paciente}}</td>
+                <td>{{agendamento.profissional}}</td>
+                <td>
+                    <button pButton icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top" class="ui-button-info" 
+                    [routerLink]="['/agendamentos' , agendamento.id]"></button>
+                   
+                    <button pButton (click)="deletar(agendamento)" icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" class="ui-button-danger"></button>
+                </td>
+            </tr>
+        </ng-template>
+    
+    
+    
+    </p-table>
+    
+    
+    <a routerLink="/agendamentos/cadastrar"><button pButton label="Novo Registro"></button></a>
+           
+    
+    
+    
+    
+    </div>
+
+
+    

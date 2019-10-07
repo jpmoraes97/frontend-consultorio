@@ -1,0 +1,56 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-fluid">
+        <h1 style="color:#4c4f4d; font-weight: bold">Agendamentos / {{editando ? 'Editar' : 'Cadastrar'}}</h1>
+    </div>
+    
+    <div class="ui-g-12 ui-fluid">
+
+    <form [formGroup]="formulario" autocomplete="off" (ngSubmit)="salvar()">
+    
+        
+    
+        <p-fieldset>
+        <p-header style="color:#4c4f4d; font-weight: bold">DADOS DO AGENDAMENTO</p-header>  
+      
+        
+        <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">
+            <label>Data</label>
+            <p-calendar name="data" [touchUI]="true" formControlName="data" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+   
+        <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">
+            <label>Horario</label>
+            <p-calendar name="horario" [touchUI]="true" [timeOnly]="true" dataType="string" hourFormat="24" formControlName="horario"></p-calendar>
+        </div>
+       
+        <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid" formGroupName="paciente">
+            <label>Paciente</label>
+            <p-dropdown name="paciente" [options]="pacientes" formControlName="id" placeholder="Selecione" [filter]="true" [virtualScroll]="true"></p-dropdown>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid" formGroupName="profissional" >
+            <label>Profissional</label>
+            <p-dropdown name="profissional" [options]="profissionais" formControlName="id" placeholder="Selecione" [filter]="true" [virtualScroll]="true"></p-dropdown>
+        </div>
+    
+    </p-fieldset>
+        
+    
+
+    
+        <div class="ui-g-2 ui-fluid">
+            <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid" class="ui-button-info"></button>
+        </div>
+    
+        <br  />
+    
+        <a routerLink="/agendamentos">Voltar a pesquisa de agendamentos</a>
+       
+    
+       
+    
+    </form>
+    
+    </div>
+    
+    </div>

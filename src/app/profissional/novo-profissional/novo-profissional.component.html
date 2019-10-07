@@ -1,0 +1,106 @@
+<div class="ui-g">
+    <div class="ui-g-12 ui-fluid">
+        <h1 style="color:#4c4f4d; font-weight: bold">Profissionais / Cadastrar</h1>
+    </div>
+    
+    <form [formGroup]="formulario" autocomplete="off" (ngSubmit)="salvar()">
+    
+    
+        <p-fieldset>
+        <p-header style="color:#4c4f4d; font-weight: bold">DADOS PESSOAIS</p-header>  
+      
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Nome</label>
+            <input pInputText name="nome" formControlName="nome"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>RG</label>
+            <input pInputText name="rg" formControlName="rg"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>CPF</label>
+            <input pInputText name="cpf" formControlName="cpf"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid" >
+            <label>Email</label>
+            <input pInputText name="email" formControlName="email"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Celular</label>
+            <input pInputText name="celular" formControlName="celular"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Telefone</label>
+            <input pInputText name="telefone" formControlName="telefone"/>
+        </div>
+    
+    
+    </p-fieldset>
+        
+    
+    
+        <!--ENDEREÇO-->
+        <div formGroupName="endereco">
+    
+        <p-fieldset>
+        <p-header style="color:#4c4f4d; font-weight: bold">ENDEREÇO</p-header>
+         
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Logradouro</label>
+            <input pInputText name="logradouro" formControlName="logradouro"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+                <label>Número</label>
+                <input pInputText name="numero" formControlName="numero"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Complemento</label>
+            <input pInputText name="complemento" formControlName="complemento"/>
+        </div>
+    
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Cidade</label>
+            <input pInputText name="cidade" formControlName="cidade"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>Estado</label>
+            <input pInputText name="estado" formControlName="estado"/>
+        </div>
+    
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <label>CEP</label>
+            <input pInputText name="cep" formControlName="cep"/>
+        </div>
+    
+        </p-fieldset>
+    
+        </div>
+    
+    
+    
+        <div class="ui-g-2 ui-fluid">
+            <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid" class="ui-button-info"></button>
+        </div>
+    
+        <br  />
+    
+        <a routerLink="/profissionais">Voltar a pesquisa de profissionais</a>
+       
+    
+       
+    
+    </form>
+    
+    
+    </div>
