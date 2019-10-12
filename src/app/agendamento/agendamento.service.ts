@@ -11,6 +11,11 @@ export class AgendamentoService {
 
   constructor(private http : HttpClient) { }
 
+  getData() : Promise<any>{
+    return this.http.get<any>(`${this.url}`)
+    .toPromise();
+  }
+
 
   listar() : Promise<any>{
     return this.http.get<any>(`${this.url}?resumo`)

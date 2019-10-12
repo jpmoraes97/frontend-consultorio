@@ -1,0 +1,30 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+        <h1 style="color:#4c4f4d; font-weight: bold">Relatório de títulos por profissional</h1>
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="gerar()">
+        <div class="ui-g-12">
+
+        <label>Vencimento</label>
+        <p-calendar dateFormat="dd/mm/yy" required 
+        [(ngModel)]="inicio" name="inicio" [inputStyle]="{ 'width' : '95px'}"></p-calendar>
+
+        <label>Até</label>
+        <p-calendar dateFormat="dd/mm/yy" required 
+        [(ngModel)]="fim" name="fim" [inputStyle]="{ 'width' : '95px'}"></p-calendar>
+
+        </div>
+
+        <div class="ui-g-12">
+            <button pButton type="submit" label="Gerar" [disabled]="f.invalid"></button>
+        </div>
+
+
+
+    </form>
+
+
+
+
+</div>

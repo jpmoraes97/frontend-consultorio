@@ -1,8 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgendamentoService } from '../agendamento.service';
 import { ToastyService } from 'ng2-toasty';
-
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import { FullCalendarComponent } from '@fullcalendar/angular';
+
+
+
+
+
 
 @Component({
   selector: 'app-pesquisar-agendamento',
@@ -11,22 +18,17 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 })
 export class PesquisarAgendamentoComponent implements OnInit {
 
-  agendamentos : any;
-
-  calendarPlugins = [dayGridPlugin]; // important!
-
-  eventos : any[];
-
-  options : any;
+  agendamentos : any[];
 
   constructor(private agendamentoService : AgendamentoService,
               private toasty : ToastyService) { }
 
   ngOnInit() {
+
     this.listar();
 
-  }
-
+ }
+  
 
   listar(){
     this.agendamentoService.listar()

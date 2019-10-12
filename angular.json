@@ -28,11 +28,24 @@
               "node_modules/primeicons/primeicons.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/ng2-toasty/style-bootstrap.css"
+              "node_modules/ng2-toasty/style-bootstrap.css",
+
+              "node_modules/fullcalendar/dist/fullcalendar.min.css",
+
+              "node_modules/@fullcalendar/core/main.css",
+              "node_modules/@fullcalendar/daygrid/main.css",
+              "node_modules/@fullcalendar/timegrid/main.css"
+             
+              
             ],
             "scripts": [
 
-              "node_modules/chart.js/dist/Chart.bundle.min.js"
+              "node_modules/chart.js/dist/Chart.bundle.min.js",
+
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/moment/min/moment.min.js",
+              "node_modules/fullcalendar/dist/fullcalendar.min.js"
+
 
 
 

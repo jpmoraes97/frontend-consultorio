@@ -45,6 +45,10 @@ import { ConfirmationService } from 'primeng/components/common/confirmationservi
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { ErrorHandlerService } from './core/error-handler.service';
+import { RelatoriosComponent } from './relatorio/relatorios/relatorios.component';
+import {FormsModule} from '@angular/forms';
+import { RelatorioService } from './relatorio/relatorio.service';
+
 
 
 registerLocaleData(localePt);
@@ -63,7 +67,8 @@ registerLocaleData(localePt);
     PesquisarTituloComponent,
     NovaCategoriaComponent,
     PesquisarCategoriaComponent,
-    DashboardComponent
+    DashboardComponent,
+    RelatoriosComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +88,8 @@ registerLocaleData(localePt);
     SelectButtonModule,
     PanelModule,
     ChartModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    FormsModule
 
   ],
   providers: [
@@ -96,7 +102,8 @@ registerLocaleData(localePt);
     ConfirmationService,
     ToastyService,
     ErrorHandlerService,
-    {provide : LOCALE_ID, useValue: 'pt-BR'}
+    {provide : LOCALE_ID, useValue: 'pt-BR'},
+    RelatorioService
   
   ],
 

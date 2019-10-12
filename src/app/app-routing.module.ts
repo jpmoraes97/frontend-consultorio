@@ -9,6 +9,7 @@ import { PesquisarAgendamentoComponent } from './agendamento/pesquisar-agendamen
 import { NovoTituloComponent } from './titulo/novo-titulo/novo-titulo.component';
 import { PesquisarTituloComponent } from './titulo/pesquisar-titulo/pesquisar-titulo.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
+import { RelatoriosComponent } from './relatorio/relatorios/relatorios.component';
 
 const routes: Routes = [
   {path : '', redirectTo : 'dashboard', pathMatch : 'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path : 'titulos', component : PesquisarTituloComponent},
   {path : 'titulos/cadastrar', component : NovoTituloComponent},
   {path : 'titulos/:id', component : NovoTituloComponent},
-  {path : 'dashboard', component : DashboardComponent}
+  {path : 'dashboard', component : DashboardComponent},
+  {path : 'relatorios', component : RelatoriosComponent}
 
 ];
 
