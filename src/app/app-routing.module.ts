@@ -10,9 +10,10 @@ import { NovoTituloComponent } from './titulo/novo-titulo/novo-titulo.component'
 import { PesquisarTituloComponent } from './titulo/pesquisar-titulo/pesquisar-titulo.component';
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { RelatoriosComponent } from './relatorio/relatorios/relatorios.component';
+import { SegurancaComponent } from './seguranca/seguranca/seguranca.component';
 
 const routes: Routes = [
-  {path : '', redirectTo : 'dashboard', pathMatch : 'full'},
+  {path : '', redirectTo : 'login', pathMatch : 'full'},
   {path : 'pacientes', component : PesquisarPacienteComponent},
   {path : 'pacientes/cadastrar', component : NovoPacienteComponent},
   {path : 'profissionais', component : PesquisarProfissionalComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path : 'titulos/cadastrar', component : NovoTituloComponent},
   {path : 'titulos/:id', component : NovoTituloComponent},
   {path : 'dashboard', component : DashboardComponent},
-  {path : 'relatorios', component : RelatoriosComponent}
+  {path : 'relatorios', component : RelatoriosComponent},
+  {path : 'login', component : SegurancaComponent}
 
 ];
 

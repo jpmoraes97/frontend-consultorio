@@ -10,11 +10,11 @@
     
     
     <ul class="navbar-menu" [hidden]="!exibindoMenu">
-        <li class="navbar-user">Administrador</li>
+        <li class="navbar-user">{{segurancaService.jwtPayload.user_name}}</li>
         <a routerLink="/titulos" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Titulos</li></a> 
         <a routerLink="/pacientes" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Pacientes</li></a> 
-        <a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Dashboard</li></a> 
-        <a routerLink="/relatorios" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Relatórios</li></a> 
+        <a routerLink="/relatorios" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Relatórios</li></a>
+        <a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Dashboard</li></a>  
         <a routerLink="/profissionais" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Profissionais</li></a>  
         <a routerLink="/agendamentos" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Agendamentos</li></a>  
        

@@ -28,6 +28,8 @@ import {CalendarModule} from 'primeng/calendar';
 
 import {ChartModule} from 'primeng/chart';
 
+
+
 import { FullCalendarModule } from '@fullcalendar/angular'; // for FullCalendar!
 import {TooltipModule} from 'primeng/tooltip';
 import { NovoTituloComponent } from './titulo/novo-titulo/novo-titulo.component';
@@ -48,10 +50,17 @@ import { ErrorHandlerService } from './core/error-handler.service';
 import { RelatoriosComponent } from './relatorio/relatorios/relatorios.component';
 import {FormsModule} from '@angular/forms';
 import { RelatorioService } from './relatorio/relatorio.service';
+import { SegurancaComponent } from './seguranca/seguranca/seguranca.component';
+import { SegurancaService } from './seguranca/seguranca.service';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 
 
 registerLocaleData(localePt);
+
 
 @NgModule({
   declarations: [
@@ -68,7 +77,8 @@ registerLocaleData(localePt);
     NovaCategoriaComponent,
     PesquisarCategoriaComponent,
     DashboardComponent,
-    RelatoriosComponent
+    RelatoriosComponent,
+    SegurancaComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +99,14 @@ registerLocaleData(localePt);
     PanelModule,
     ChartModule,
     ConfirmDialogModule,
-    FormsModule
+    FormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['http://localhost:8080/oauth/token']
+      }
+    }),
 
   ],
   providers: [
@@ -103,10 +120,14 @@ registerLocaleData(localePt);
     ToastyService,
     ErrorHandlerService,
     {provide : LOCALE_ID, useValue: 'pt-BR'},
-    RelatorioService
+    RelatorioService,
+    SegurancaService,
+    JwtHelperService
   
   ],
 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
