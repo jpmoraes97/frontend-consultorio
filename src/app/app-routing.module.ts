@@ -11,11 +11,26 @@ import { PesquisarTituloComponent } from './titulo/pesquisar-titulo/pesquisar-ti
 import { DashboardComponent } from './dashboard/dashboard/dashboard.component';
 import { RelatoriosComponent } from './relatorio/relatorios/relatorios.component';
 import { SegurancaComponent } from './seguranca/seguranca/seguranca.component';
+import { AuthGuard } from './seguranca/auth.guard';
+import { NaoAutorizadoComponent } from './core/nao-autorizado/nao-autorizado.component';
 
 const routes: Routes = [
   {path : '', redirectTo : 'login', pathMatch : 'full'},
-  {path : 'pacientes', component : PesquisarPacienteComponent},
-  {path : 'pacientes/cadastrar', component : NovoPacienteComponent},
+  
+  {path : 'pacientes', component : PesquisarPacienteComponent, 
+  canActivate : [AuthGuard],
+  data : {roles : ['ROLE_PESQUISAR_PACIENTE']}
+  },
+  
+  
+  {path : 'pacientes/cadastrar', component : NovoPacienteComponent, 
+  canActivate : [AuthGuard],
+  data : {roles : ['ROLE_CADASTRAR_PACIENTE']}
+  },
+  
+  
+  
+  
   {path : 'profissionais', component : PesquisarProfissionalComponent},
   {path : 'profissionais/cadastrar', component : NovoProfissionalComponent},
   {path : 'agendamentos', component : PesquisarAgendamentoComponent},
@@ -26,7 +41,9 @@ const routes: Routes = [
   {path : 'titulos/:id', component : NovoTituloComponent},
   {path : 'dashboard', component : DashboardComponent},
   {path : 'relatorios', component : RelatoriosComponent},
-  {path : 'login', component : SegurancaComponent}
+  {path : 'login', component : SegurancaComponent},
+
+  {path : 'nao-autorizado', component : NaoAutorizadoComponent}
 
 ];
 

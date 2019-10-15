@@ -1,31 +1,28 @@
-<div class="ui-g">
-        <div class="ui-g-12">
-            <h1 style="color:#4c4f4d; font-weight: bold">Login</h1>
-        </div>
+  <div class="ui-g">
+  <div class="ui-g-12">   
+    <p-fieldset>
+        <p-header style="color:#4c4f4d; font-weight: bold">LOGIN</p-header>  
+      
 
-        {{segurancaService.jwtPayload | json}}
-    
         <form #f="ngForm">
+            
             <div class="ui-g-12">
-    
-            <label>E-mail</label>
-            <input pInputText type="email" ngModel name="email" #email required/>
-    
-            <label>Senha</label>
-            <input pInputText type="password" ngModel name="senha" #senha required/>
-    
+            <input pInputText type="email" ngModel name="email" placeholder="E-mail" #email required/>
             </div>
-    
+            <br  />
             <div class="ui-g-12">
+            <input pInputText type="password" ngModel name="senha" placeholder="Senha" #senha required/>
+            </div>    
+            
+            <br  />
+                <div class="ui-g-12">
                 <button pButton type="submit" label="Logar" [disabled]="f.invalid"
                 (click)="login(email.value, senha.value)"></button>
-            </div>
-    
-    
+                </div>
     
         </form>
     
-    
-    
-    
-    </div>
+</p-fieldset>
+
+</div> 
+</div>

@@ -4,21 +4,26 @@
     <div class="ui-g-12">
     
        <a href="javascript:;" class="navbar-toggle" (click)="exibindoMenu = !exibindoMenu"> <i style="color:white" class="pi pi-bars"> </i></a>
+       <!-- <button type="button" (click)="novoAccessToken()">Novo Access Token</button> -->
     </div>
     </div>
     </div>
     
     
     <ul class="navbar-menu" [hidden]="!exibindoMenu">
-        <li class="navbar-user">{{segurancaService.jwtPayload.user_name}}</li>
-        <a routerLink="/titulos" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Titulos</li></a> 
-        <a routerLink="/pacientes" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Pacientes</li></a> 
-        <a routerLink="/relatorios" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Relatórios</li></a>
-        <a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Dashboard</li></a>  
-        <a routerLink="/profissionais" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Profissionais</li></a>  
-        <a routerLink="/agendamentos" (click)="exibindoMenu = !exibindoMenu"><li class="navbar-menuitem">Agendamentos</li></a>  
+        <li class="navbar-user"><!--{{segurancaService.jwtPayload.user_name}}--></li>
+        <li class="navbar-menuitem"><a routerLink="/titulos" (click)="exibindoMenu = !exibindoMenu">Titulos</a></li>
+        <li class="navbar-menuitem"><a routerLink="/pacientes" (click)="exibindoMenu = !exibindoMenu">Pacientes</a></li>
+        <li class="navbar-menuitem"><a routerLink="/relatorios" (click)="exibindoMenu = !exibindoMenu">Relatórios</a></li>
+        <li class="navbar-menuitem"><a routerLink="/dashboard" (click)="exibindoMenu = !exibindoMenu">Dashboard</a></li>  
+        <li class="navbar-menuitem"><a routerLink="/profissionais" (click)="exibindoMenu = !exibindoMenu">Profissionais</a> </li> 
+        <li class="navbar-menuitem"><a routerLink="/agendamentos" (click)="exibindoMenu = !exibindoMenu">Agendamentos</a></li>  
+        <li class="navbar-menuitem"><a href="javascript:;" (click)="logout()">Logout</a></li>
        
     </ul>
     
     
     </nav>
+
+
+    <!--*ngIf="segurancaService.temPermissao('ROLE_REMOVER_PACIENTE')"-->

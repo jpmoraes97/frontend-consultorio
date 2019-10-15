@@ -10,7 +10,7 @@ import { PacienteService } from './paciente/paciente.service';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
 import {TableModule} from 'primeng/table';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { NovoPacienteComponent } from './paciente/novo-paciente/novo-paciente.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FieldsetModule} from 'primeng/fieldset';
@@ -53,11 +53,14 @@ import { RelatorioService } from './relatorio/relatorio.service';
 import { SegurancaComponent } from './seguranca/seguranca/seguranca.component';
 import { SegurancaService } from './seguranca/seguranca.service';
 import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
+import { AngularHttpInterceptor } from './seguranca/seguranca/angular-http';
+import { NaoAutorizadoComponent } from './core/nao-autorizado/nao-autorizado.component';
+import { AuthGuard } from './seguranca/auth.guard';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
-
 
 registerLocaleData(localePt);
 
@@ -78,7 +81,8 @@ registerLocaleData(localePt);
     PesquisarCategoriaComponent,
     DashboardComponent,
     RelatoriosComponent,
-    SegurancaComponent
+    SegurancaComponent,
+    NaoAutorizadoComponent
   ],
   imports: [
     BrowserModule,
@@ -122,7 +126,13 @@ registerLocaleData(localePt);
     {provide : LOCALE_ID, useValue: 'pt-BR'},
     RelatorioService,
     SegurancaService,
-    JwtHelperService
+    JwtHelperService,{
+      provide: HTTP_INTERCEPTORS,
+      useClass: AngularHttpInterceptor,
+      multi: true
+  },
+
+  AuthGuard
   
   ],
 
