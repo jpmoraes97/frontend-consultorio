@@ -17,6 +17,7 @@
             <th>AÇÕES</th>
         </tr>
     </ng-template>
+    
     <ng-template pTemplate="body" let-paciente>
         <tr>
             <td>{{paciente.nome}}</td>
@@ -27,16 +28,11 @@
                 <button pButton (click)="deletar(paciente)" icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" class="ui-button-danger ui-button-rounded"></button>
             </td>
         </tr>
+
     </ng-template>
-
-
 
 </p-table>
 
-
-<a routerLink="/pacientes/cadastrar"><button pButton label="Novo Registro"></button></a>
-       
-
-
+<a routerLink="/pacientes/cadastrar"><button pButton label="Novo Registro"></button></a>   
 
 </div> 

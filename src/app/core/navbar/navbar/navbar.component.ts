@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SegurancaService } from 'src/app/seguranca/seguranca.service';
 import { Router } from '@angular/router';
+import { ToastyService } from 'ng2-toasty';
+import { ConfirmationService } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private segurancaService : SegurancaService, private router : Router) { }
+  constructor(private segurancaService : SegurancaService, private router : Router,
+    private confirmation : ConfirmationService) { }
 
   ngOnInit() {
   }
@@ -17,6 +20,19 @@ export class NavbarComponent implements OnInit {
   novoAccessToken(){
     this.segurancaService.obterNovoAccessToken();
   }
+
+
+  deslogar(){
+    this.confirmation.confirm({
+      message : 'Tem certeza que deseja sair ?',
+      accept : () => {
+        this.logout();
+         
+      }
+
+    })
+  }
+
 
   logout(){
     this.segurancaService.logout()

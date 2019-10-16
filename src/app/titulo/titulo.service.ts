@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import * as moment from 'moment';
+
+export class TituloFilter{
+  descricao : string;
+  pagina = 0;
+  itensPorPagina = 5;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +18,26 @@ export class TituloService {
   constructor(private http : HttpClient) { }
 
 
-  listar() : Promise<any>{
-    return this.http.get<any>(`${this.url}`)
-    .toPromise();
+  pesquisar(filtro : TituloFilter) : Promise<any>{
+
+    let params = new HttpParams();
+    params = params.set('page', filtro.pagina.toString());
+    params = params.set('size', filtro.itensPorPagina.toString());
+
+    if(filtro.descricao){
+      params = params.set('descricao', filtro.descricao);
+    }
+
+    return this.http.get<any>(`${this.url}`, {params})
+    .toPromise()
+    .then(response => {
+      const titulos = response['content']
+      const resultado = {
+        titulos,
+        total : response['totalElements']
+      }
+      return resultado;
+    })
   }
 
   salvar(titulo : any) : Promise<any>{
