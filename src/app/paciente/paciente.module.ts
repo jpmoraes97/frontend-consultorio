@@ -8,13 +8,14 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
-
-
+import { PanelModule } from 'primeng/panel';
+import {DialogModule} from 'primeng/dialog';
 
 import { PacienteRoutingModule } from './paciente-routing.module';
 import { PesquisarPacienteComponent } from './pesquisar-paciente/pesquisar-paciente.component';
 import { NovoPacienteComponent } from './novo-paciente/novo-paciente.component';
 import { PacienteService } from './paciente.service';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { PacienteService } from './paciente.service';
     InputTextModule,
     ReactiveFormsModule,
     FieldsetModule,
-    FormsModule
+    FormsModule,
+    PanelModule,
+    DialogModule
 
   ],
   providers : [

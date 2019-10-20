@@ -11,9 +11,9 @@
     <ng-template pTemplate="header">
         <tr>
             <th>NOME</th>
+            <th>E-MAIL</th>
+            <th>RG</th>
             <th>CPF</th>
-            <th>CELULAR</th>
-            <th>TELEFONE</th>
             <th>AÇÕES</th>
         </tr>
     </ng-template>
@@ -21,11 +21,15 @@
     <ng-template pTemplate="body" let-paciente>
         <tr>
             <td>{{paciente.nome}}</td>
+            <td>{{paciente.email}}</td>
+            <td>{{paciente.rg}}</td>
             <td>{{paciente.cpf}}</td>
-            <td>{{paciente.celular}}</td>
-            <td>{{paciente.telefone}}</td>
             <td>
-                <button pButton (click)="deletar(paciente)" icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" class="ui-button-danger ui-button-rounded"></button>
+                <button pButton icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" 
+                class="ui-button-danger ui-button-rounded" (click)="confirmarExclusao(paciente)"></button>
+
+                <button pButton icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top"
+                class="ui-button-info" [routerLink]="['/pacientes' , paciente.id]"></button>
             </td>
         </tr>
 
@@ -33,6 +37,6 @@
 
 </p-table>
 
-<a routerLink="/pacientes/cadastrar"><button pButton label="Novo Registro"></button></a>   
+<a routerLink="/pacientes/cadastrar"><button pButton type="button" label="Novo Registro"></button></a>   
 
 </div> 

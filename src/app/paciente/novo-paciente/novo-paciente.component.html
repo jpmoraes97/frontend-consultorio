@@ -1,106 +1,213 @@
 <div class="ui-g">
-<div class="ui-g-12 ui-fluid">
-    <h1 style="color:#4c4f4d; font-weight: bold">Pacientes / Cadastrar</h1>
-</div>
 
-<form [formGroup]="formulario" autocomplete="off" (ngSubmit)="salvar()">
-
-
-    <p-fieldset>
-    <p-header style="color:#4c4f4d; font-weight: bold">DADOS PESSOAIS</p-header>  
-  
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Nome</label>
-        <input pInputText name="nome" formControlName="nome"/>
+    <div class="ui-g-12">
+        <h1 style="color: dimgrey">{{ editando ? 'Edição de ' : 'Novo '}} Paciente</h1>
     </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>RG</label>
-        <input pInputText name="rg" formControlName="rg"/>
-    </div>
+    <div class="ui-g-12">
 
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>CPF</label>
-        <input pInputText name="cpf" formControlName="cpf"/>
-    </div>
+        <form autocomplete="off" #form="ngForm" (ngSubmit)="salvar(form)">
+            
+            <div class="ui-g-12 ui-fluid">
+            <label>Nome</label>
+            <input pInputText type="text" name="nome" [(ngModel)]="paciente.nome" placeholder="Nome"/>
+            </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid" >
-        <label>Email</label>
-        <input pInputText name="email" formControlName="email"/>
-    </div>
+            <div class="ui-g-12 ui-fluid">
+             <label>E-mail</label>   
+            <input pInputText type="text" name="email" [(ngModel)]="paciente.email" placeholder="E-mail"/>
+            </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Celular</label>
-        <input pInputText name="celular" formControlName="celular"/>
-    </div>
+            <div class="ui-g-12 ui-fluid">
+            <label>RG</label>
+            <input pInputText type="text" name="rg" [(ngModel)]="paciente.rg" placeholder="RG"/>
+            </div>
 
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Telefone</label>
-        <input pInputText name="telefone" formControlName="telefone"/>
-    </div>
+            <div class="ui-g-12 ui-fluid">
+            <label>CPF</label>
+            <input pInputText type="text" name="cpf" [(ngModel)]="paciente.cpf" placeholder="CPF"/>
+            </div>
 
+         
+            <!--TESTE ENDERECO-->
 
-</p-fieldset>
+            <div class="ui-g-12 ui-fluid">
+            <label>Logradouro</label>
+            <input pInputText type="text" name="logradouro" [(ngModel)]="paciente.endereco.logradouro" placeholder="Logradouro"/>
+            </div>
     
-
-
-    <!--ENDEREÇO-->
-    <div formGroupName="endereco">
-
-    <p-fieldset>
-    <p-header style="color:#4c4f4d; font-weight: bold">ENDEREÇO</p-header>
-     
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Logradouro</label>
-        <input pInputText name="logradouro" formControlName="logradouro"/>
-    </div>
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <div class="ui-g-12 ui-fluid">
             <label>Número</label>
-            <input pInputText name="numero" formControlName="numero"/>
+            <input pInputText type="text" name="numero" [(ngModel)]="paciente.endereco.numero" placeholder="Número"/>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+            <label>Complemento</label>
+            <input pInputText type="text" name="commplemento" [(ngModel)]="paciente.endereco.complemento" placeholder="Complemento"/>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+            <label>Cidade</label>
+            <input pInputText type="text" name="cidade" [(ngModel)]="paciente.endereco.cidade" placeholder="Cidade"/>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+            <label>Estado</label>
+            <input pInputText type="text" name="estado" [(ngModel)]="paciente.endereco.estado" placeholder="Estado"/>
+            </div>
+
+            <div class="ui-g-12 ui-fluid">
+            <label>CEP</label>
+            <input pInputText type="text" name="cep" [(ngModel)]="paciente.endereco.cep" placeholder="cep"/>
+            </div>
+    
+                <!--TESTE ENDERECo-->
+
+
+
+                <div class="ui-g-12">
+                    <p-panel header="Telefones">
+                            <div class="ui-g">
+                        <button pButton icon="pi pi-plus" type="button" label="Novo" class="ui-button-secondary" (click)="prepararNovoTelefone()"></button>
+                        <p-table [value]="paciente.telefones" [responsive]="true">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>TIPO</th>
+                                    <th>NUMERO</th>
+                                    <th>AÇÕES</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-telefone let-rowIndex="rowIndex">
+                                    <tr>
+                                        <td>{{telefone.tipo}}</td>
+                                        <td>{{telefone.numero}}</td>
+                                        <td>
+                                            <button pButton type="button" icon="pi pi-pencil" class="ui-button-info ui-button-rounded"
+                                            (click)="prepararEdicaoTelefone(telefone, rowIndex)"></button>
+                                            
+                                            <button pButton type="button" icon="pi pi-trash" class="ui-button-danger ui-button-rounded"
+                                            (click)="removerTelefone(rowIndex)"></button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+    
+                                <div class="ui-g-12">
+                                <ng-template pTemplate="emptymessage">
+                                     <p> Nenhum registro cadastrado</p>
+                                      </ng-template>
+                                    </div>
+                        </p-table>
+                    </div>
+                    </p-panel>
+                </div>
+
+
+
+
+          <!--RESPONSAVEL -->
+            
+                <div class="ui-g-12">
+                <p-panel header="Responsáveis">
+                        <div class="ui-g">
+                    <button pButton icon="pi pi-plus" type="button" label="Novo" class="ui-button-secondary" (click)="prepararNovoResponsavel()"></button>
+                    <p-table [value]="paciente.responsaveis" [responsive]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>NOME</th>
+                                <th>GRAU PARENTESCO</th>
+                                <th>CELULAR</th>
+                                <th>AÇÕES</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-responsavel let-rowIndex="rowIndex">
+                                <tr>
+                                    <td>{{responsavel.nome}}</td>
+                                    <td>{{responsavel.grauParentesco}}</td>
+                                    <td>{{responsavel.celular}}</td>
+                                    <td>
+                                        <button pButton type="button" icon="pi pi-pencil" class="ui-button-info ui-button-rounded"
+                                        (click)="prepararEdicaoResponsavel(responsavel, rowIndex)"></button>
+                                        
+                                        <button pButton type="button" icon="pi pi-trash" class="ui-button-danger ui-button-rounded"
+                                        (click)="removerResponsavel(rowIndex)"></button>
+                                    </td>
+                                </tr>
+                            </ng-template>
+
+                            <div class="ui-g-12">
+                            <ng-template pTemplate="emptymessage">
+                                 <p> Nenhum registro cadastrado</p>
+                                  </ng-template>
+                                </div>
+                    </p-table>
+                </div>
+                </p-panel>
+            </div>
+
+
+            <!--RESPONSAVELL-->
+
+
+
+           
+
+            <div class="ui-g-12">
+                <button pButton type="submit" label="Salvar"></button>
+                <a routerLink="/pacientes">      Voltar a pesquisa</a>
+            </div>
+
+        </form>
+
     </div>
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Complemento</label>
-        <input pInputText name="complemento" formControlName="complemento"/>
-    </div>
-
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Cidade</label>
-        <input pInputText name="cidade" formControlName="cidade"/>
-    </div>
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>Estado</label>
-        <input pInputText name="estado" formControlName="estado"/>
-    </div>
-
-    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-        <label>CEP</label>
-        <input pInputText name="cep" formControlName="cep"/>
-    </div>
-
-    </p-fieldset>
-
-    </div>
-
-
-
-    <div class="ui-g-2 ui-fluid">
-        <button pButton type="submit" label="Salvar" [disabled]="formulario.invalid" class="ui-button-info"></button>
-    </div>
-
-    <br  />
-
-    <a routerLink="/pacientes">Voltar a pesquisa de pacientes</a>
-   
-
-   
-
-</form>
-
 
 </div>
+
+
+
+
+
+<!--DIALOGO RESPONSAVEL-->
+<p-dialog header="Cadastrar Responsável" [(visible)]="exibindo" modal="modal" *ngIf="responsavel">
+<form #formResponsavel="ngForm" (ngSubmit)="confirmarResponsavel(formResponsavel)">
+<div class="ui-g-12 ui-fluid">
+    <label>Nome</label>
+    <input pInputText name="nome" [(ngModel)]="responsavel.nome" placeholder="Nome"/>
+</div>
+
+<div class="ui-g-12 ui-fluid">
+    <label>Grau Parentesco</label>
+    <input pInputText name="nome" [(ngModel)]="responsavel.grauParentesco" placeholder="Selecione"/>
+</div>
+
+<div class="ui-g-12 ui-fluid">
+    <label>Celular</label>
+    <input pInputText name="celular" [(ngModel)]="responsavel.celular" placeholder="Celular"/>
+</div>
+
+<div class="ui-g-12">
+    <button pButton label="Confirmar"></button>
+</div>
+</form>
+</p-dialog>
+<!--DIALOGO RESPONSAVEL-->
+
+
+<!--DIALOGO TELEFONE-->
+<p-dialog header="Cadastrar Telefone" [(visible)]="exibindoTelefone" modal="modal" *ngIf="telefone">
+    <form #formTelefone="ngForm" (ngSubmit)="confirmarTelefone(formTelefone)">
+    <div class="ui-g-12 ui-fluid">
+        <label>Tipo</label>
+        <p-dropdown [options]="tipos" placeholder="Selecione" name="tipo" [(ngModel)]="telefone.tipo"></p-dropdown>
+    </div>
+    
+    <div class="ui-g-12 ui-fluid">
+        <label>Número</label>
+        <input pInputText name="numero" [(ngModel)]="telefone.numero" placeholder="Número"/>
+    </div>
+    
+    <div class="ui-g-12">
+        <button pButton label="Confirmar"></button>
+    </div>
+    </form>
+    </p-dialog>
+<!--DIALOGO TELEFONE-->

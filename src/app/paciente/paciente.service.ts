@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams} from '@angular/common/http';
+import { Paciente } from '../core/model';
 
 
 export class PacienteFiltro{
@@ -42,6 +43,16 @@ export class PacienteService {
 
   deletar(id : number) : Promise<void>{
     return this.http.delete<any>(`${this.url}/${id}`)
+    .toPromise();
+  }
+
+  buscar(id : number) : Promise<Paciente>{
+    return this.http.get<Paciente>(`${this.url}/${id}`)
+    .toPromise();
+  }
+
+  atualizar(paciente : Paciente) : Promise<Paciente>{
+    return this.http.put<Paciente>(`${this.url}/${paciente.id}`, paciente)
     .toPromise();
   }
 

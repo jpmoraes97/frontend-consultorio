@@ -12,6 +12,11 @@ const routes: Routes = [
     data : {roles : ['ROLE_PESQUISAR_PACIENTE']}
   },
   {
+    path : 'pacientes/:id', component : NovoPacienteComponent,
+    canActivate : [AuthGuard],
+    data : {roles : ['ROLE_CADASTRAR_PACIENTE']}
+  },
+  {
     path : 'pacientes/cadastrar', component : NovoPacienteComponent,
     canActivate : [AuthGuard],
     data : {roles : ['ROLE_CADASTRAR_PACIENTE']}
