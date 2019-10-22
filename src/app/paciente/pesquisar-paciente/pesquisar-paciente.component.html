@@ -20,16 +20,17 @@
     
     <ng-template pTemplate="body" let-paciente>
         <tr>
-            <td>{{paciente.nome}}</td>
-            <td>{{paciente.email}}</td>
-            <td>{{paciente.rg}}</td>
-            <td>{{paciente.cpf}}</td>
-            <td>
-                <button pButton icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" 
-                class="ui-button-danger ui-button-rounded" (click)="confirmarExclusao(paciente)"></button>
-
+            <td><span class="ui-column-title">NOME</span>{{paciente.nome}}</td>
+            <td><span class="ui-column-title">E-MAIL</span>{{paciente.email}}</td>
+            <td><span class="ui-column-title">RG</span>{{paciente.rg}}</td>
+            <td><span class="ui-column-title">CPF</span>{{paciente.cpf}}</td>
+            <td><span class="ui-column-title">AÇÕES</span>
                 <button pButton icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top"
                 class="ui-button-info" [routerLink]="['/pacientes' , paciente.id]"></button>
+
+                <button pButton icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" 
+                class="ui-button-danger" (click)="confirmarExclusao(paciente)"></button>
+
             </td>
         </tr>
 

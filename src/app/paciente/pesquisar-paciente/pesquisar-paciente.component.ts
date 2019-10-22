@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PacienteService, PacienteFiltro } from '../paciente.service';
 import { ToastyService } from 'ng2-toasty';
 import { ConfirmationService } from 'primeng/components/common/api';
+import { Paciente } from 'src/app/core/model';
 
 @Component({
   selector: 'app-pesquisar-paciente',
@@ -10,7 +11,7 @@ import { ConfirmationService } from 'primeng/components/common/api';
 })
 export class PesquisarPacienteComponent implements OnInit {
 
-  pacientes : any;
+  pacientes : Paciente[];
 
   filtro = new PacienteFiltro();
 
@@ -37,7 +38,7 @@ export class PesquisarPacienteComponent implements OnInit {
   }
 
 
-  confirmarExclusao(paciente : any){
+  confirmarExclusao(paciente : Paciente){
     this.confirmation.confirm({
       message : 'Tem certeza que deseja excluir ?',
       accept : () => {

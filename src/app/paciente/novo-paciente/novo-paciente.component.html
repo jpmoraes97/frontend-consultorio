@@ -1,5 +1,7 @@
 <div class="ui-g">
 
+        
+
     <div class="ui-g-12">
         <h1 style="color: dimgrey">{{ editando ? 'Edição de ' : 'Novo '}} Paciente</h1>
     </div>
@@ -8,58 +10,57 @@
 
         <form autocomplete="off" #form="ngForm" (ngSubmit)="salvar(form)">
             
-            <div class="ui-g-12 ui-fluid">
-            <label>Nome</label>
+            <div class="ui-g-12"> <!--DIV TESTE-->
+
+            <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">
             <input pInputText type="text" name="nome" [(ngModel)]="paciente.nome" placeholder="Nome"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-             <label>E-mail</label>   
+            <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">   
             <input pInputText type="text" name="email" [(ngModel)]="paciente.email" placeholder="E-mail"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-            <label>RG</label>
+            <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">
             <input pInputText type="text" name="rg" [(ngModel)]="paciente.rg" placeholder="RG"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-            <label>CPF</label>
+            <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">
             <input pInputText type="text" name="cpf" [(ngModel)]="paciente.cpf" placeholder="CPF"/>
             </div>
+
+            
 
          
             <!--TESTE ENDERECO-->
 
-            <div class="ui-g-12 ui-fluid">
-            <label>Logradouro</label>
+           
+
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
+            <input pInputText type="text" name="cep" [(ngModel)]="paciente.endereco.cep" placeholder="CEP"/>
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
             <input pInputText type="text" name="logradouro" [(ngModel)]="paciente.endereco.logradouro" placeholder="Logradouro"/>
             </div>
     
-            <div class="ui-g-12 ui-fluid">
-            <label>Número</label>
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
             <input pInputText type="text" name="numero" [(ngModel)]="paciente.endereco.numero" placeholder="Número"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-            <label>Complemento</label>
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
             <input pInputText type="text" name="commplemento" [(ngModel)]="paciente.endereco.complemento" placeholder="Complemento"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-            <label>Cidade</label>
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
             <input pInputText type="text" name="cidade" [(ngModel)]="paciente.endereco.cidade" placeholder="Cidade"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-            <label>Estado</label>
+            <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
             <input pInputText type="text" name="estado" [(ngModel)]="paciente.endereco.estado" placeholder="Estado"/>
             </div>
 
-            <div class="ui-g-12 ui-fluid">
-            <label>CEP</label>
-            <input pInputText type="text" name="cep" [(ngModel)]="paciente.endereco.cep" placeholder="cep"/>
-            </div>
+           
+
     
                 <!--TESTE ENDERECo-->
 
@@ -146,15 +147,17 @@
 
 
             <!--RESPONSAVELL-->
-
+       
 
 
            
 
             <div class="ui-g-12">
                 <button pButton type="submit" label="Salvar"></button>
-                <a routerLink="/pacientes">      Voltar a pesquisa</a>
+                <a routerLink="/pacientes">      VOLTAR A PESQUISA</a>
             </div>
+
+        </div> <!--DIV TESTE-->
 
         </form>
 
@@ -170,43 +173,39 @@
 <p-dialog header="Cadastrar Responsável" [(visible)]="exibindo" modal="modal" *ngIf="responsavel">
 <form #formResponsavel="ngForm" (ngSubmit)="confirmarResponsavel(formResponsavel)">
 <div class="ui-g-12 ui-fluid">
-    <label>Nome</label>
-    <input pInputText name="nome" [(ngModel)]="responsavel.nome" placeholder="Nome"/>
+    <input pInputText name="nome" [(ngModel)]="responsavel.nome" placeholder="Nome" required/>
 </div>
 
 <div class="ui-g-12 ui-fluid">
-    <label>Grau Parentesco</label>
-    <input pInputText name="nome" [(ngModel)]="responsavel.grauParentesco" placeholder="Selecione"/>
+    <input pInputText name="nome" [(ngModel)]="responsavel.grauParentesco" placeholder="Grau Parentesco" required/>
 </div>
 
 <div class="ui-g-12 ui-fluid">
-    <label>Celular</label>
-    <input pInputText name="celular" [(ngModel)]="responsavel.celular" placeholder="Celular"/>
+    <input pInputText name="celular" [(ngModel)]="responsavel.celular" placeholder="Celular" required/>
 </div>
 
 <div class="ui-g-12">
-    <button pButton label="Confirmar"></button>
+    <button pButton label="Confirmar" [disabled]="formResponsavel.invalid"></button>
 </div>
 </form>
 </p-dialog>
 <!--DIALOGO RESPONSAVEL-->
 
 
+
 <!--DIALOGO TELEFONE-->
 <p-dialog header="Cadastrar Telefone" [(visible)]="exibindoTelefone" modal="modal" *ngIf="telefone">
     <form #formTelefone="ngForm" (ngSubmit)="confirmarTelefone(formTelefone)">
     <div class="ui-g-12 ui-fluid">
-        <label>Tipo</label>
-        <p-dropdown [options]="tipos" placeholder="Selecione" name="tipo" [(ngModel)]="telefone.tipo"></p-dropdown>
+        <p-dropdown [options]="tipos"  name="tipo" [(ngModel)]="telefone.tipo" placeholder="Selecione o tipo" required></p-dropdown>
     </div>
     
     <div class="ui-g-12 ui-fluid">
-        <label>Número</label>
-        <input pInputText name="numero" [(ngModel)]="telefone.numero" placeholder="Número"/>
+        <input pInputText name="numero" [(ngModel)]="telefone.numero" placeholder="Número" required/>
     </div>
     
     <div class="ui-g-12">
-        <button pButton label="Confirmar"></button>
+        <button pButton label="Confirmar" [disabled]="formTelefone.invalid"></button>
     </div>
     </form>
     </p-dialog>

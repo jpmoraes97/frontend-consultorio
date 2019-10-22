@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PacienteService } from '../paciente.service';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ToastyService } from 'ng2-toasty';
 import { Paciente, Responsavel, Telefone } from 'src/app/core/model';
 import { ActivatedRoute } from '@angular/router';
@@ -30,8 +30,11 @@ export class NovoPacienteComponent implements OnInit {
 
   tipos : any[];
  
+  @Input() responsaveis : Array<Responsavel>;
 
-  constructor(private service : PacienteService, private route : ActivatedRoute) { }
+  constructor(private service : PacienteService, 
+    private route : ActivatedRoute,
+    private toasty : ToastyService) { }
 
   ngOnInit() {
    
@@ -55,14 +58,18 @@ export class NovoPacienteComponent implements OnInit {
 
   adicionar(frm : FormControl){
     this.service.salvar(this.paciente);
-    alert('Paciente adicionado com sucesso')
+    this.toasty.success('Paciente adicionado com sucesso!')
     frm.reset();
     this.paciente = new Paciente();
   }
 
   atualizar(frm : FormControl){
-    this.service.atualizar(this.paciente);
-    alert('Paciente atualizado com sucesso');
+    this.service.atualizar(this.paciente)
+    .then(paciente => {
+      this.paciente = paciente;
+      this.toasty.success('Paciente atualizado com sucesso!');    
+      
+    })
   }
 
   salvar(frm : FormControl){
@@ -87,8 +94,10 @@ export class NovoPacienteComponent implements OnInit {
   }
 
   confirmarResponsavel(frm : FormControl){
+   // this.responsaveis[this.responsavelIndex] = this.clonarResponsavel(this.responsavel);
     this.paciente.responsaveis[this.responsavelIndex] = this.clonarResponsavel(this.responsavel);
-    this.exibindo = false;
+   
+   this.exibindo = false;
     frm.reset();
   }
 

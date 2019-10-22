@@ -30,13 +30,13 @@
             </ng-template>
             <ng-template pTemplate="body" let-titulo>
                 <tr>
-                    <td [style.color]="titulo.tipo === 'DESPESA' ? 'red' : 'blue'">{{titulo.tipo}}</td>
-                    <td>{{titulo.descricao}}</td>
-                    <td>{{titulo.dataVencimento | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{titulo.dataPagamento | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{titulo.profissional.nome}}</td>
-                    <td [style.color]="titulo.tipo === 'DESPESA' ? 'red' : 'blue'">{{titulo.valor | number : '1.2-2'}}</td>
-                    <td>
+                    <td [style.color]="titulo.tipo === 'DESPESA' ? 'red' : 'blue'"><span class="ui-column-title" style="color: black;">TIPO</span>{{titulo.tipo}}</td>
+                    <td><span class="ui-column-title">DESCRIÇÃO</span>{{titulo.descricao}}</td>
+                    <td><span class="ui-column-title">DATA VENCIMENTO</span>{{titulo.dataVencimento | date: 'dd/MM/yyyy'}}</td>
+                    <td><span class="ui-column-title">DATA PAGAMENTO</span>{{titulo.dataPagamento | date: 'dd/MM/yyyy'}}</td>
+                    <td><span class="ui-column-title">PROFISSIONAL</span>{{titulo.profissional.nome}}</td>
+                    <td [style.color]="titulo.tipo === 'DESPESA' ? 'red' : 'blue'"><span class="ui-column-title" style="color: black;">VALOR</span>{{titulo.valor | number : '1.2-2'}}</td>
+                    <td><span class="ui-column-title">AÇÕES</span>
                             <button pButton [routerLink]="['/titulos', titulo.id]" icon="pi pi-pencil" pTooltip="editar" tooltipPosition="top" class="ui-button-info"></button>
                         <button pButton (click)="confirmarExclusao(titulo)" icon="pi pi-trash" pTooltip="deletar" tooltipPosition="top" class="ui-button-danger"></button>
                     </td>
