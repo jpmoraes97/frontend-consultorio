@@ -25,7 +25,8 @@
             </div>
 
             <div class="ui-g-12 ui-md-6 ui-lg-6 ui-fluid">
-            <input pInputText type="text" name="cpf" [(ngModel)]="paciente.cpf" placeholder="CPF"/>
+            <p-inputMask type="text" name="cpf" [(ngModel)]="paciente.cpf" 
+             placeholder="CPF" mask="999.999.999-99"></p-inputMask>
             </div>
 
             
@@ -36,7 +37,8 @@
            
 
             <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-            <input pInputText type="text" name="cep" [(ngModel)]="paciente.endereco.cep" placeholder="CEP"/>
+      <!--      <input pInputText type="text" name="cep" [(ngModel)]="paciente.endereco.cep" placeholder="CEP"/> -->
+            <p-inputMask mask="99.999-999" type="text" name="cep" [(ngModel)]="paciente.endereco.cep" placeholder="CEP"></p-inputMask>
             </div>
 
             <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
@@ -44,7 +46,8 @@
             </div>
     
             <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
-            <input pInputText type="text" name="numero" [(ngModel)]="paciente.endereco.numero" placeholder="Número"/>
+            <p-inputMask type="text" name="numero" [(ngModel)]="paciente.endereco.numero"
+             placeholder="Número" mask="9?9999"></p-inputMask>
             </div>
 
             <div class="ui-g-12 ui-md-6 ui-lg-4 ui-fluid">
@@ -67,7 +70,7 @@
 
 
                 <div class="ui-g-12">
-                    <p-panel header="Telefones">
+                    <p-panel header="TELEFONES">
                             <div class="ui-g">
                         <button pButton icon="pi pi-plus" type="button" label="Novo" class="ui-button-secondary" (click)="prepararNovoTelefone()"></button>
                         <p-table [value]="paciente.telefones" [responsive]="true">
@@ -94,7 +97,7 @@
     
                                 <div class="ui-g-12">
                                 <ng-template pTemplate="emptymessage">
-                                     <p> Nenhum registro cadastrado</p>
+                                     <p style="font-weight: bold;"> Nenhum telefone cadastrado</p>
                                       </ng-template>
                                     </div>
                         </p-table>
@@ -108,7 +111,7 @@
           <!--RESPONSAVEL -->
             
                 <div class="ui-g-12">
-                <p-panel header="Responsáveis">
+                <p-panel header="RESPONSÁVEIS">
                         <div class="ui-g">
                     <button pButton icon="pi pi-plus" type="button" label="Novo" class="ui-button-secondary" (click)="prepararNovoResponsavel()"></button>
                     <p-table [value]="paciente.responsaveis" [responsive]="true">
@@ -137,7 +140,7 @@
 
                             <div class="ui-g-12">
                             <ng-template pTemplate="emptymessage">
-                                 <p> Nenhum registro cadastrado</p>
+                                 <p style="font-weight: bold;"> Nenhum responsável cadastrado</p>
                                   </ng-template>
                                 </div>
                     </p-table>
@@ -177,11 +180,11 @@
 </div>
 
 <div class="ui-g-12 ui-fluid">
-    <input pInputText name="nome" [(ngModel)]="responsavel.grauParentesco" placeholder="Grau Parentesco" required/>
+    <input pInputText name="grauParentesco" [(ngModel)]="responsavel.grauParentesco" placeholder="Grau Parentesco" required/>
 </div>
 
 <div class="ui-g-12 ui-fluid">
-    <input pInputText name="celular" [(ngModel)]="responsavel.celular" placeholder="Celular" required/>
+    <p-inputMask name="celular" mask="(99)?999999999" [(ngModel)]="responsavel.celular" placeholder="Celular" required></p-inputMask>
 </div>
 
 <div class="ui-g-12">
@@ -201,7 +204,8 @@
     </div>
     
     <div class="ui-g-12 ui-fluid">
-        <input pInputText name="numero" [(ngModel)]="telefone.numero" placeholder="Número" required/>
+        <p-inputMask name="numero" [(ngModel)]="telefone.numero" 
+         placeholder="Número" mask="(99)?999999999" required></p-inputMask>
     </div>
     
     <div class="ui-g-12">

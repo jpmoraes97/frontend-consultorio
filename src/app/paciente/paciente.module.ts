@@ -10,6 +10,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
 import { PanelModule } from 'primeng/panel';
 import {DialogModule} from 'primeng/dialog';
+import {InputMaskModule} from 'primeng/inputmask';
+
 
 import { PacienteRoutingModule } from './paciente-routing.module';
 import { PesquisarPacienteComponent } from './pesquisar-paciente/pesquisar-paciente.component';
@@ -35,7 +37,8 @@ import { PacienteService } from './paciente.service';
     FieldsetModule,
     FormsModule,
     PanelModule,
-    DialogModule
+    DialogModule,
+    InputMaskModule
 
   ],
   providers : [
