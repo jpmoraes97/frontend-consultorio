@@ -7,20 +7,21 @@
         <ng-template pTemplate="header">
             <tr>
                 <th>NOME</th>
+                <th>E-MAIL</th>
                 <th>CPF</th>
-                <th>CELULAR</th>
-                <th>TELEFONE</th>
+                <th>RG</th>
                 <th>AÇÕES</th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-profissional>
             <tr>
                 <td>{{profissional.nome}}</td>
+                <td>{{profissional.email}}</td>
                 <td>{{profissional.cpf}}</td>
-                <td>{{profissional.celular}}</td>
-                <td>{{profissional.telefone}}</td>
+                <td>{{profissional.rg}}</td>
                 <td>
-                    <button pButton (click)="deletar(profissional)" icon="pi pi-trash" class="ui-button-danger ui-button-rounded"></button>
+                        <button pButton (click)="deletar(profissional)" icon="pi pi-pencil" class="ui-button-info"></button>
+                    <button pButton (click)="deletar(profissional)" icon="pi pi-trash" class="ui-button-danger"></button>
                 </td>
             </tr>
         </ng-template>

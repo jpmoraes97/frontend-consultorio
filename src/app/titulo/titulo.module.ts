@@ -7,6 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {TooltipModule} from 'primeng/tooltip';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea'; 
 import {FieldsetModule} from 'primeng/fieldset';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {CalendarModule} from 'primeng/calendar';
@@ -34,7 +35,8 @@ import { TituloService } from './titulo.service';
     FieldsetModule,
     FormsModule,
     SelectButtonModule,
-    CalendarModule
+    CalendarModule,
+    InputTextModule
   ],
 
   providers : [

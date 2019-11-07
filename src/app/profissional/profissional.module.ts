@@ -8,6 +8,9 @@ import {TooltipModule} from 'primeng/tooltip';
 import {TableModule} from 'primeng/table';
 import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
+import {InputMaskModule} from 'primeng/inputmask';
+import { PanelModule } from 'primeng/panel';
+import {DialogModule} from 'primeng/dialog';
 
 import { ProfissionalRoutingModule } from './profissional-routing.module';
 import { PesquisarProfissionalComponent } from './pesquisar-profissional/pesquisar-profissional.component';
@@ -30,7 +33,11 @@ import { ProfissionalService } from './profissional.service';
     InputTextModule,
     ReactiveFormsModule,
     FieldsetModule,
-    FormsModule
+    FormsModule,
+    InputMaskModule,
+    PanelModule,
+    DialogModule
+    
   ],
   providers : [
     ProfissionalService

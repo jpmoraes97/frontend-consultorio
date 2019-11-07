@@ -19,6 +19,10 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { RelatorioModule } from './relatorio/relatorio.module';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { CoreModule } from './core/core.module';
+import { UsuarioModule } from './usuario/usuario.module';
+import { TableModule } from 'primeng/table';
+import { PanelModule } from 'primeng/panel';
+
 
 
 
@@ -43,6 +47,9 @@ import { CoreModule } from './core/core.module';
     DashboardModule,
     RelatorioModule,
     SegurancaModule,
+    UsuarioModule,
+    
+    
 
     CoreModule
 

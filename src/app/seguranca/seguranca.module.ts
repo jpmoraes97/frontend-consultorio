@@ -5,6 +5,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {InputTextModule} from 'primeng/inputtext';
 import {FieldsetModule} from 'primeng/fieldset';
 import {ButtonModule} from 'primeng/button';
+import {PanelModule} from 'primeng/panel';
 
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 import { SegurancaComponent } from './seguranca/seguranca.component';
@@ -21,7 +22,8 @@ import { SegurancaService } from './seguranca.service';
     ButtonModule,
     FieldsetModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    PanelModule
   ],
   providers : [
     SegurancaService

@@ -40,9 +40,35 @@ export class Paciente{
     email : string;
     cpf : string;
     rg : string;
-    //telefone : string;
-    //celular : string;
     endereco = new Endereco();
     telefones = new Array<Telefone>();
     responsaveis = new Array<Responsavel>();
 }
+
+export class Profissional{
+    id: number;
+    nome : string;
+    email : string;
+    cpf : string;
+    rg : string;
+}
+
+export class Permissao{
+  [x: string]: any;
+        id: number;
+        descricao : string;
+    
+        constructor(id? : number, descricao? : string){
+            this.id = id;
+            this.descricao = descricao;
+        }
+    }
+    
+    export class Usuario{
+        id : number;
+        nome : string;
+        email : string;
+        senha : string;
+        permissoes = new Array<Permissao>();
+    }
+    

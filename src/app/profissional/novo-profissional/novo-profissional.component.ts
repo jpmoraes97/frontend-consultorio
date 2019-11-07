@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProfissionalService } from '../profissional.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ToastyService } from 'ng2-toasty';
+import { Profissional, Telefone } from 'src/app/core/model';
 
 @Component({
   selector: 'app-novo-profissional',
@@ -10,16 +11,20 @@ import { ToastyService } from 'ng2-toasty';
 })
 export class NovoProfissionalComponent implements OnInit {
 
-  constructor(private profissionalService : ProfissionalService,
-              private formBuilder : FormBuilder,
+  constructor(private service : ProfissionalService,
               private toasty : ToastyService) { }
 
-  formulario : FormGroup;
+
+  profissional = new Profissional();
+
 
   ngOnInit() {
-    this.configurarFormulario();
+   // this.configurarFormulario();
+
+
   }
 
+  /*
   configurarFormulario(){
     this.formulario = this.formBuilder.group({
       id : [],
@@ -39,15 +44,30 @@ export class NovoProfissionalComponent implements OnInit {
       })
     })
   }
+  */
+
+ 
+
+ adicionar(frm : FormControl){
+  this.service.salvar(this.profissional);
+  this.toasty.success('Profissional adicionado com sucesso!')
+  frm.reset();
+  this.profissional = new Profissional();
+}
+
+atualizar(frm : FormControl){
+  this.service.atualizar(this.profissional)
+  .then(resposta => {
+    this.profissional = resposta;
+    this.toasty.success('Profissional atualizado com sucesso!');    
+  })
+}
+
+salvar(frm : FormControl){
+  this.adicionar(frm);
+}
 
 
-  salvar(){
-    this.profissionalService.salvar(this.formulario.value)
-    .then(() => {
-      this.toasty.success('Profissional cadastrado com sucesso')
-      this.formulario.reset();
-    })
-  }
 
 
 

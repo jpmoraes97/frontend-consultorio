@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Profissional } from '../core/model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,13 @@ export class ProfissionalService {
     return this.http.post<any>(`${this.url}`, profissional)
     .toPromise();
   }
+
+
+  atualizar(profissional : Profissional) : Promise<Profissional>{
+    return this.http.put<Profissional>(`${this.url}/${profissional.id}`, profissional)
+    .toPromise()
+  }
+
 
   deletar(id : number) : Promise<void>{
     return this.http.delete<void>(`${this.url}/${id}`)

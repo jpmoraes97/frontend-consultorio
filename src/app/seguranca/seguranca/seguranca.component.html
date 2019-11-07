@@ -1,28 +1,32 @@
-  <div class="ui-g">
-  <div class="ui-g-12">   
-    <p-fieldset>
-        <p-header style="color:#4c4f4d; font-weight: bold">LOGIN</p-header>  
-      
 
+    
+     
         <form #f="ngForm">
+
+          <p-fieldset  legend="LOGIN">
             
-            <div class="ui-g-12 ui-fluid">
+        
+            <div class="ui-g-12">
+          
+            <div class="ui-g-12 ui-fluid"> 
             <input pInputText type="email" ngModel name="email" placeholder="E-mail" #email required/>
             </div>
-            <br  />
+           
             <div class="ui-g-12 ui-fluid">
             <input pInputText type="password" ngModel name="senha" placeholder="Senha" #senha required/>
-            </div>    
+            </div>
             
-            <br  />
-                <div class="ui-g-12">
-                <button pButton type="submit" label="Logar" [disabled]="f.invalid"
-                (click)="login(email.value, senha.value)"></button>
-                </div>
+            
+            <div class="ui-g-12 ui-fluid">  
+            <button pButton type="submit" label="Logar" [disabled]="f.invalid"
+            (click)="login(email.value, senha.value)"></button>
+            </div>
+        
+        </div>
+      </p-fieldset>
+      
     
         </form>
     
-</p-fieldset>
+     
 
-</div> 
-</div>
