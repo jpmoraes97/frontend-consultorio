@@ -29,7 +29,7 @@
     "angular2-jwt": "^0.2.3",
     "chart.js": "^2.8.0",
     "fullcalendar": "^3.10.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "moment": "^2.24.0",
     "ng2-toasty": "^4.0.3",
     "primeicons": "^2.0.0",
